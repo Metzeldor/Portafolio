@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101828">
+  <meta name="description" content="ClientFlow: CRM ligero para organizar clientes, oportunidades y seguimientos comerciales.">
+  <title>ClientFlow — CRM para negocios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="ClientFlow inicio"><span class="brand-mark">C</span><span>client<span class="brand-light">flow</span></span></a>
+      <div class="workspace-label">ESPACIO DE TRABAJO</div>
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="nav-link active" href="#overview" data-view="overview"><span class="nav-icon">▦</span> Resumen</a>
+        <a class="nav-link" href="#clients" data-view="clients"><span class="nav-icon">♙</span> Clientes <span class="nav-count" id="client-nav-count">0</span></a>
+        <a class="nav-link" href="#pipeline" data-view="pipeline"><span class="nav-icon">◫</span> Oportunidades</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="tip-card"><span class="tip-icon">✦</span><strong>Un paso a la vez</strong><p>Registra cada contacto y convierte conversaciones en oportunidades.</p></div>
+        <div class="profile"><div class="avatar">AT</div><div><strong>Tu negocio</strong><small>Plan personal</small></div><span class="profile-dots">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu icon-button" id="menu-toggle" aria-label="Abrir menú">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb-current">Resumen</strong></div>
+        <div class="top-actions"><span class="today" id="today-label"></span><button class="button button-primary button-small" id="add-top">＋ Nuevo contacto</button></div>
+      </header>
+
+      <section class="view active-view" id="view-overview">
+        <div class="page-heading"><div><div class="eyebrow">PANEL DE CONTROL</div><h1>Resumen general</h1><p class="muted">Esto es lo que está pasando en tu negocio.</p></div><button class="button button-outline" id="export-csv">↓ Exportar datos</button></div>
+        <div class="stat-grid">
+          <article class="stat-card"><div class="stat-top"><span>Total de clientes</span><span class="stat-icon violet">♙</span></div><strong class="stat-number" id="stat-clients">0</strong><span class="stat-foot">Contactos registrados</span></article>
+          <article class="stat-card"><div class="stat-top"><span>Oportunidades abiertas</span><span class="stat-icon blue">◫</span></div><strong class="stat-number" id="stat-open">0</strong><span class="stat-foot">En proceso comercial</span></article>
+          <article class="stat-card"><div class="stat-top"><span>Valor potencial</span><span class="stat-icon green">$</span></div><strong class="stat-number" id="stat-value">$0</strong><span class="stat-foot">De oportunidades abiertas</span></article>
+          <article class="stat-card"><div class="stat-top"><span>Ventas ganadas</span><span class="stat-icon orange">↗</span></div><strong class="stat-number" id="stat-won">0</strong><span class="stat-foot">Oportunidades cerradas</span></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel pipeline-panel"><div class="panel-heading"><div><h2>Pipeline comercial</h2><p class="muted">Oportunidades por etapa</p></div><a href="#pipeline" class="text-link" data-view="pipeline">Ver pipeline →</a></div><div id="pipeline-summary" class="pipeline-summary"></div><div class="pipeline-legend" id="pipeline-legend"></div></article>
+          <article class="panel"><div class="panel-heading"><div><h2>Actividad reciente</h2><p class="muted">Tus últimos contactos</p></div><a href="#clients" class="text-link" data-view="clients">Ver todos →</a></div><div id="recent-list" class="recent-list"></div></article>
+        </div>
+        <article class="panel getting-started" id="getting-started"><div class="start-icon">✦</div><div><h2>Empieza a organizar tus ventas</h2><p class="muted">Agrega tu primer contacto, crea una oportunidad y registra el siguiente paso comercial.</p></div><button class="button button-primary" id="start-add">＋ Agregar primer cliente</button></article>
+      </section>
+
+      <section class="view" id="view-clients">
+        <div class="page-heading"><div><div class="eyebrow">RELACIONES</div><h1>Clientes</h1><p class="muted">Administra tus contactos y mantén el seguimiento al día.</p></div><button class="button button-primary" id="add-client">＋ Nuevo contacto</button></div>
+        <div class="panel table-panel"><div class="table-toolbar"><div class="search-wrap"><span>⌕</span><input id="client-search" type="search" placeholder="Buscar por nombre, empresa o correo…" aria-label="Buscar clientes"></div><select id="client-filter" aria-label="Filtrar clientes"><option value="all">Todos los contactos</option><option value="lead">Prospectos</option><option value="customer">Clientes</option></select></div><div class="table-scroll"><table><thead><tr><th>CONTACTO</th><th>EMPRESA</th><th>ESTADO</th><th>TELÉFONO</th><th>REGISTRO</th><th></th></tr></thead><tbody id="clients-table"></tbody></table></div><div class="empty-state hidden" id="clients-empty"><span>♙</span><strong>Aún no hay contactos</strong><p>Agrega tu primer cliente para empezar a organizar tu negocio.</p><button class="button button-primary" id="empty-add">＋ Crear contacto</button></div></div>
+      </section>
+
+      <section class="view" id="view-pipeline">
+        <div class="page-heading"><div><div class="eyebrow">VENTAS</div><h1>Oportunidades</h1><p class="muted">Visualiza cada negocio desde el primer contacto hasta el cierre.</p></div><button class="button button-primary" id="add-deal">＋ Nueva oportunidad</button></div>
+        <div class="pipeline-board" id="pipeline-board"></div>
+      </section>
+
+      <footer class="app-footer"><span>ClientFlow <span class="footer-dot">•</span> Proyecto de portafolio</span><span>Los datos se guardan localmente en este navegador.</span></footer>
+    </main>
+  </div>
+
+  <dialog class="modal" id="client-modal">
+    <form id="client-form" method="dialog">
+      <div class="modal-heading"><div><div class="eyebrow">AGENDA DE CONTACTOS</div><h2 id="client-modal-title">Nuevo contacto</h2></div><button type="button" class="icon-button close-modal" aria-label="Cerrar">×</button></div>
+      <input type="hidden" id="client-id">
+      <label>Nombre completo <input id="client-name" required maxlength="80" placeholder="Ej. Laura Gómez"></label>
+      <label>Empresa <input id="client-company" maxlength="80" placeholder="Nombre del negocio"></label>
+      <div class="form-row"><label>Correo electrónico <input id="client-email" type="email" maxlength="120" placeholder="laura@empresa.com"></label><label>Teléfono <input id="client-phone" type="tel" maxlength="30" placeholder="+57 300 000 0000"></label></div>
+      <label>Tipo de contacto <select id="client-status"><option value="lead">Prospecto</option><option value="customer">Cliente</option></select></label>
+      <label>Notas <textarea id="client-notes" rows="3" maxlength="500" placeholder="Intereses, necesidades o próximos pasos…"></textarea></label>
+      <div class="modal-actions"><button type="button" class="button button-outline close-modal">Cancelar</button><button type="submit" class="button button-primary">Guardar contacto</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="deal-modal">
+    <form id="deal-form" method="dialog">
+      <div class="modal-heading"><div><div class="eyebrow">GESTIÓN COMERCIAL</div><h2>Nueva oportunidad</h2></div><button type="button" class="icon-button close-modal" aria-label="Cerrar">×</button></div>
+      <label>Nombre de la oportunidad <input id="deal-title" required maxlength="100" placeholder="Ej. Sitio web corporativo"></label>
+      <label>Cliente <select id="deal-client" required></select></label>
+      <div class="form-row"><label>Valor estimado (COP) <input id="deal-value" type="number" min="0" step="1000" required placeholder="1500000"></label><label>Etapa <select id="deal-stage"><option value="lead">Por contactar</option><option value="proposal">Propuesta</option><option value="negotiation">Negociación</option><option value="won">Ganada</option><option value="lost">Perdida</option></select></label></div>
+      <label>Fecha estimada de cierre <input id="deal-date" type="date"></label>
+      <div class="modal-actions"><button type="button" class="button button-outline close-modal">Cancelar</button><button type="submit" class="button button-primary">Guardar oportunidad</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
