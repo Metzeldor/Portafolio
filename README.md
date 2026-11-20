@@ -49,7 +49,20 @@ Aplicación web para organizar contactos y oportunidades comerciales desde un pa
 
 [▶ Abrir demo](https://metzeldor.github.io/Portafolio/clientflow/) · [Ver código y documentación](./clientflow/)
 
-### 2. Portafolio web
+### 2. Web & AI Studio — Sitio de servicios digitales
+
+Landing page premium para presentar servicios de desarrollo web y creación de agentes de inteligencia artificial personalizados.
+
+- Diseño oscuro con acentos violeta, cian y lima.
+- Mockups visuales de experiencias web y asistentes de IA.
+- Secciones de servicios, proceso, proyectos y contacto.
+- Diseño responsive, navegación móvil y animaciones accesibles.
+
+**Stack:** HTML, CSS y JavaScript.
+
+[▶ Abrir demo](https://metzeldor.github.io/Portafolio/studio/) · [Ver código y documentación](./studio/)
+
+### 3. Portafolio web
 
 Sitio personal para presentar mis servicios, proyectos y formas de contacto. Incluye una demostración interactiva de un asistente virtual.
 
@@ -57,7 +70,7 @@ Sitio personal para presentar mis servicios, proyectos y formas de contacto. Inc
 
 [▶ Abrir sitio](https://metzeldor.github.io/Portafolio/) · [Ver código](./)
 
-### 3. Encriptador de texto
+### 4. Encriptador de texto
 
 Herramienta para cifrar y descifrar mensajes con reglas de sustitución definidas por el proyecto.
 
@@ -65,7 +78,7 @@ Herramienta para cifrar y descifrar mensajes con reglas de sustitución definida
 
 [▶ Abrir demo](https://metzeldor.github.io/Encriptador-de-texto-Alura-Challenge/) · [Ver repositorio](https://github.com/Metzeldor/Encriptador-de-texto-Alura-Challenge)
 
-### 4. El Juego de la Vida
+### 5. El Juego de la Vida
 
 Implementación del autómata celular de Conway, un ejercicio de lógica y simulación basado en reglas para células vecinas.
 
@@ -73,7 +86,7 @@ Implementación del autómata celular de Conway, un ejercicio de lógica y simul
 
 [Ver repositorio](https://github.com/Metzeldor/el-juego-de-la-vida)
 
-### 5. pawebv1 — Portafolio en desarrollo
+### 6. pawebv1 — Portafolio en desarrollo
 
 Proyecto frontend construido con React, TypeScript, Vite y Tailwind CSS.
 
